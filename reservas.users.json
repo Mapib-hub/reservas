@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "6818fd7f6a446708284ebe61"
+  },
+  "username": "Administrador",
+  "email": "prueba@ejemplo.com",
+  "password": "$2b$10$495uFeIgDHY2uGGh3ZGe9uJR32HUdixyyiFwBXQoea6QfbX1NX1Ea",
+  "image": "perfil.jpg",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2025-05-05T18:03:43.174Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-12T21:01:00.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6820adae5090551950e747f8"
+  },
+  "username": "Pepito",
+  "email": "pepito@example.com",
+  "password": "$2b$10$RhpQv1UMGQ6lGyHijOmyke4HVqEwP9Kd5hYhMvHinJO6/qKDDPkSe",
+  "image": "perfil.jpg",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2025-05-11T14:01:18.495Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-11T20:20:40.716Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6820b0f03e648a7e7aaa3888"
+  },
+  "username": "Pablo",
+  "email": "pablito@example.com",
+  "password": "$2b$10$sK6wdkok4OcxWjs2p84orOhr7ZXyl/52SEdzhNJocGGp/ZgX9XxAu",
+  "image": "perfil.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-05-11T14:15:12.845Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-12T21:02:31.230Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68225edc5632ea8412790235"
+  },
+  "username": "maria",
+  "email": "maria@gmail.com",
+  "password": "$2b$10$35gfTKEyVCzhczIuRBtyGOQBaqllgGV3UkBudUssSnQ6a6/5GilKK",
+  "image": "perfil.jpg",
+  "role": "user",
+  "createdAt": {
+    "$date": "2025-05-12T20:49:32.579Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-12T20:49:32.579Z"
+  },
+  "__v": 0
+}]

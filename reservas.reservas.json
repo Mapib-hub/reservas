@@ -1,0 +1,233 @@
+[{
+  "_id": {
+    "$oid": "681910536a446708284ebe6c"
+  },
+  "usuario_id": {
+    "$oid": "6818fd7f6a446708284ebe61"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818eba188f361b5f8bf8813"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2024-07-29T00:00:00.000Z"
+  },
+  "estado": "CANCELADA_ADMIN",
+  "createdAt": {
+    "$date": "2025-05-05T19:24:03.533Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T14:52:08.086Z"
+  },
+  "__v": 0,
+  "notas_adicionales": ""
+},
+{
+  "_id": {
+    "$oid": "68191fd9acd8dd1e2dd1721c"
+  },
+  "usuario_id": {
+    "$oid": "6818fd7f6a446708284ebe61"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818ec5d88f361b5f8bf8826"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2024-07-30T00:00:00.000Z"
+  },
+  "estado": "Confirmada",
+  "createdAt": {
+    "$date": "2025-05-05T20:30:17.487Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-05T20:30:17.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6824adeee615b42bd7aca5ae"
+  },
+  "usuario_id": {
+    "$oid": "68225edc5632ea8412790235"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818ec8c88f361b5f8bf8834"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-16T00:00:00.000Z"
+  },
+  "estado": "PENDIENTE",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-14T14:51:26.017Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T14:51:51.757Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6824af8be615b42bd7aca5f8"
+  },
+  "usuario_id": {
+    "$oid": "6820adae5090551950e747f8"
+  },
+  "bloque_horario_id": {
+    "$oid": "68154adbe8c81388221de7c9"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-19T00:00:00.000Z"
+  },
+  "estado": "CONFIRMADA",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-14T14:58:19.520Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-14T14:58:19.520Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68263c77c0d28bf30de9dffd"
+  },
+  "usuario_id": {
+    "$oid": "68225edc5632ea8412790235"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818ec9d88f361b5f8bf883a"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-24T00:00:00.000Z"
+  },
+  "estado": "CONFIRMADA",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-15T19:11:51.223Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T19:11:51.223Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68264107c0d28bf30de9e053"
+  },
+  "usuario_id": {
+    "$oid": "6820adae5090551950e747f8"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818ec9d88f361b5f8bf8839"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-24T00:00:00.000Z"
+  },
+  "estado": "CONFIRMADA",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-15T19:31:19.779Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T19:31:19.779Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682642d41e254ff7d80b85d9"
+  },
+  "usuario_id": {
+    "$oid": "68225edc5632ea8412790235"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818eba188f361b5f8bf8815"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-19T00:00:00.000Z"
+  },
+  "estado": "CANCELADA_USUARIO",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-15T19:39:00.598Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T21:24:16.768Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6826433c1e254ff7d80b860f"
+  },
+  "usuario_id": {
+    "$oid": "6820adae5090551950e747f8"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818eba188f361b5f8bf8814"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-19T00:00:00.000Z"
+  },
+  "estado": "CONFIRMADA",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-15T19:40:44.361Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T19:40:44.361Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68264d0f89a8c67f4ecfc5ef"
+  },
+  "usuario_id": {
+    "$oid": "6820adae5090551950e747f8"
+  },
+  "bloque_horario_id": {
+    "$oid": "6818ec5d88f361b5f8bf8826"
+  },
+  "cancha_id": {
+    "$oid": "681546d9436cd319690965dd"
+  },
+  "fecha_reserva": {
+    "$date": "2025-05-20T00:00:00.000Z"
+  },
+  "estado": "CONFIRMADA",
+  "notas_adicionales": "",
+  "createdAt": {
+    "$date": "2025-05-15T20:22:39.796Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T20:22:39.796Z"
+  },
+  "__v": 0
+}]
