@@ -25,7 +25,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copiar una configuración personalizada de Nginx (opcional pero recomendado)
 # Si no tienes una, Nginx usará su configuración por defecto que podría funcionar para SPA.
-# COPY nginx.conf /etc/nginx/conf.d/default.conf 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Exponer el puerto 80 (Nginx escucha en el puerto 80 por defecto)
 EXPOSE 80
