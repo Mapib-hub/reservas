@@ -5,8 +5,8 @@ yarn-debug.log*
 yarn-error.log*
 .env
 .env.*
-!/.env.example # Si tienes un archivo de ejemplo para variables de entorno, no lo ignores
-
+!/.env.example
+!cliente/.env.production # Permite el .env.production específico del cliente
 # Carpetas de build/dist (aunque el Dockerfile del cliente las maneja, es bueno ignorarlas en Git)
 cliente/dist/
 cliente/coverage/ # Si tienes reportes de coverage
