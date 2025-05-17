@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNoti } from '../../context/NoticiaContex.jsx'; // Asegúrate que la ruta sea correcta
 import { Link } from 'react-router-dom'; // Opcional: si cada noticia fuera clickeable a un detalle
 import { truncateText } from '../../utils/textUtils.js'; // Para resumir la descripción
 
 const PublicNoticiasPage = () => {
-  const { noticias, loading, error } = useNoti();
-
+  const { noticias, loading, error, getNoticias } = useNoti();
+useEffect(() => {
+       getNoticias();
+    }, []);
   if (loading) return <p className="text-center py-5" >Cargando noticias...</p>;
   if (error) return <p className="text-center py-5 text-red-500">Error al cargar noticias: {error.message || error}</p>;
 //console.log(noticias);
