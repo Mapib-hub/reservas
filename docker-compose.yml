@@ -6,6 +6,9 @@ services:
     build:
       context: ./cliente # Ruta a la carpeta del frontend
       dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL_ARG: /api 
+        VITE_BACKEND_URL_ARG: ""   
     ports:
       - "8087:80" # Mapea el puerto 8087 del host al puerto 80 del contenedor (Nginx)
     restart: unless-stopped
@@ -19,6 +22,7 @@ services:
     build:
       context: ./servidor # Ruta a la carpeta del backend
       dockerfile: Dockerfile
+
     ports:
       - "3000:3000" # Mapea el puerto 3000 del host al puerto 3000 del contenedor (backend)
                     # Si tu backend usa otro puerto, cámbialo aquí (ej. "5000:5000")

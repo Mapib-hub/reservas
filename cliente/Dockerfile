@@ -13,6 +13,13 @@ RUN npm install
 
 # Copiar todo el código fuente del proyecto al directorio de trabajo
 COPY . .
+# Declarar los argumentos que se pasarán desde docker-compose (si los usas)
+ARG VITE_API_BASE_URL_ARG
+ARG VITE_BACKEND_URL_ARG
+
+# Establecer las variables de entorno para Vite usando los argumentos
+ENV VITE_API_BASE_URL=${VITE_API_BASE_URL_ARG:-/api}
+ENV VITE_BACKEND_URL=${VITE_BACKEND_URL_ARG:-}
 RUN echo "--- Contenido de .env.production en Docker build ---" && cat .env.production || echo "--- .env.production NO ENCONTRADO en Docker build ---"
 
 # Construir la aplicación para producción (Vite usa 'build')
