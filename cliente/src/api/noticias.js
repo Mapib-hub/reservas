@@ -1,6 +1,6 @@
 import axiosInstance from "./axios"; // Importamos nuestra instancia configurada
 
-export const getNoticiasRequest = () => axiosInstance.get(`/noticias`);
+export const getNoticiasRequest = () => axiosInstance.get(`/api/noticias`);
 
 // Podrías añadir más funciones aquí en el futuro, como:
  export const getNoticiaRequest = (id) => axiosInstance.get(`/noticias/${id}`);

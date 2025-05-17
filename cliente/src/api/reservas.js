@@ -1,7 +1,7 @@
 import axios from './axios'; // Tu instancia de axios configurada
 
 // Las rutas base para las reservas en tu API
-const API_URL = '/reservas';
+const API_URL = '/api/reservas';
 
 export const getReservasRequest = () => axios.get(API_URL);
 export const getReservaRequest = (id) => axios.get(`${API_URL}/${id}`);

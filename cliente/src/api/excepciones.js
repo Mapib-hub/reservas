@@ -1,7 +1,7 @@
 import axios from './axios'; // Tu instancia de axios configurada
 
 // Las rutas base para las excepciones en tu API
-const API_URL = '/excepciones';
+const API_URL = '/api/excepciones';
 
 export const getExcepcionesRequest = () => axios.get(API_URL);
 export const getExcepcionRequest = (id) => axios.get(`${API_URL}/${id}`);
