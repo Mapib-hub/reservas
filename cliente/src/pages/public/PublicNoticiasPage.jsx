@@ -6,7 +6,7 @@ import { truncateText } from '../../utils/textUtils.js'; // Para resumir la desc
 const PublicNoticiasPage = () => {
   const { noticias, loading, error } = useNoti();
 
-  if (loading) return <p className="text-center py-5">Cargando noticias...</p>;
+  if (loading) return <p className="text-center py-5" >Cargando noticias...</p>;
   if (error) return <p className="text-center py-5 text-red-500">Error al cargar noticias: {error.message || error}</p>;
 //console.log(noticias);
   return (
