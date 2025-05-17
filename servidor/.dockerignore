@@ -1,0 +1,9 @@
+node_modules
+.env
+npm-debug.log*
+Dockerfile
+.dockerignore
+.git
+.gitignore
+uploads/ # Si tienes una carpeta de uploads y no quieres que se copie en la imagen (se manejaría con volúmenes)
+logs/    # Si tienes una carpeta de logs

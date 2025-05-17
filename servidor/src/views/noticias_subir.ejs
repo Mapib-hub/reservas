@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <%- include('parsiales/head')%>
+</head>
+<body>
+    
+    <div class="container">
+        <div className="flex items-center justify-center">
+        <h1>Nueva Noticia</h1>
+        <form  method="post" action="/noticia" class="form" enctype="multipart/form-data" >
+             
+             <input type="text" name="titulo" placeholder="Ingrese Titulo">
+             <p>Titulo</p>
+             <textarea name="descripcion"></textarea>
+             <p>Descripcion</p> 
+             <input type="file" name="foto_noti">
+             <p>Imagen</p>
+             <button type="submit" class="btn btn-primary">Enviar</button>  
+        </form>
+        </div>
+    </div>
+    <%- include('parsiales/footer')%> 
+</body>
+</html>

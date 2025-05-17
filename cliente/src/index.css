@@ -1,0 +1,1617 @@
+/* Estilos Globales Base */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Aplicamos la nueva fuente */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f6; /* Un color de fondo suave para toda la app */
+  color: #333; /* Color de texto principal */
+  line-height: 1.6;
+}
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Fondo específico para esta página */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-form-wrapper {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px; /* Ancho máximo del formulario */
+  text-align: center;
+}
+
+.login-header h2 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.auth-errors {
+  background-color: #ffebee; /* Un rojo muy claro para errores */
+  color: #c62828; /* Rojo oscuro para el texto del error */
+  border: 1px solid #ef9a9a; /* Borde rojo claro */
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.auth-errors p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.login-form .form-group-login {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-form .form-group-login label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.login-form .form-group-login input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form .form-group-login input:focus {
+  border-color: #764ba2; /* Color del degradado al enfocar */
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.25);
+  outline: none;
+}
+
+.login-form .form-group-login input::placeholder {
+  color: #aaa;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #5cb85c; /* Un verde "deportivo" o de éxito */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin-top: 10px; /* Espacio antes del botón */
+}
+
+.login-button:hover {
+  background-color: #4cae4c; /* Verde un poco más oscuro al pasar el mouse */
+}
+
+.login-button:active {
+  transform: translateY(1px); /* Pequeño efecto al hacer clic */
+}
+
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Opcional: Estilos para enlaces de pie de página si los añades */
+.login-footer-links {
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.login-footer-links a {
+  color: #764ba2; /* Color del degradado */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-footer-links a:hover {
+  color: #5b3a82; /* Un poco más oscuro */
+  text-decoration: underline;
+}
+
+
+/* Contenedor principal de la aplicación (opcional, si envuelves tu App.jsx) */
+.app-container {
+  max-width: 1200px; /* Limita el ancho en pantallas grandes */
+  margin: 0 auto; /* Centra el contenido */
+  padding: 0 1rem; /* Espaciado lateral */
+}
+
+/* Títulos ////////////////////////////////////////////////////////////////////////////////////////////////// */
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50; /* Un color más oscuro para los títulos */
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Enlaces */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Botones Genéricos /////////////////////////////////////////////////////////////////////////////////////////// */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  text-decoration: none; /* Para que los <Link> como botones no tengan subrayado */
+}
+
+.btn:hover {
+  text-decoration: none; /* Asegurar que no haya subrayado en hover */
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+.navbar-user {
+    background-color: #007bff; /* Azul primario */
+    padding: 0.8rem 1.5rem; /* Ajuste de padding */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+/* Navbar de usuario //////////////////////////////////////////////////////////////////////// */
+.navbar-user-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user-link {
+    color: white;
+    margin-right: 20px; /* Aumentamos un poco el margen */
+    text-decoration: none;
+    font-weight: 500; /* Un poco más de peso */
+    padding: 0.5rem 0; /* Padding vertical para mejor área de click */
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-user-link:hover,
+.navbar-user-link.active { /* Podríamos añadir una clase 'active' con NavLink más adelante */
+    color: #cce5ff; /* Un azul más claro para hover/active */
+}
+
+.navbar-user-session {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user-greeting {
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.btn-navbar-logout { /* Estilo específico para el botón de logout en el navbar */
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 6px 12px; /* Ajustamos padding */
+}
+
+.btn-navbar-logout:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === COMENTADO TEMPORALMENTE PARA AISLAR PROBLEMAS ===
+/* ========================================= */
+/* Estilos para AdminLayout                  */
+/* ========================================= */
+
+/* Contenedor principal del layout del admin */
+.admin-layout {
+  display: flex;
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: #f4f6f9; /* Un color de fondo base para el área principal */
+  transition: padding-left 0.3s ease-in-out; /* Para animar cuando el sidebar se esconde/muestra en desktop */
+}
+
+/* Sidebar (Panel lateral de navegación) */
+.admin-sidebar {
+  width: 260px; /* Ancho del sidebar */
+  background-color: #2c3e50; /* Color de fondo oscuro para el sidebar */
+  color: #ecf0f1; /* Color de texto claro para el sidebar */
+  padding: 20px 15px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  z-index: 1000; /* Asegura que el sidebar esté por encima del contenido */
+}
+
+.admin-sidebar h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+/* Estilos para la navegación del sidebar */
+.admin-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-sidebar nav li a {
+  display: block;
+  padding: 12px 15px;
+  color: #bdc3c7; /* Color de los enlaces */
+  text-decoration: none;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-sidebar nav li a:hover,
+.admin-sidebar nav li a.active { /* Puedes añadir una clase 'active' con React Router NavLink */
+  background-color: #34495e; /* Color de fondo al pasar el mouse o activo */
+  color: #ffffff; /* Color de texto al pasar el mouse o activo */
+}
+
+/* Contenedor principal (header + contenido) */
+.admin-main-container {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Evita scroll horizontal si algo se desborda un poco */
+}
+
+/* Header del admin */
+.admin-header {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  height: 60px; /* Altura fija para el header */
+  position: sticky; /* Para que se quede fijo en la parte superior del admin-main-container */
+  top: 0;
+  z-index: 1001; /* Por encima del sidebar (1000) y el overlay (998) en móviles */
+}
+
+.sidebar-toggle {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #2980b9;
+}
+
+.admin-header-info {
+  display: flex;
+  align-items: center;
+}
+
+.admin-user-greeting {
+  margin-right: 20px;
+  color: #34495e;
+  font-size: 0.95em;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+.navbar-user {
+    background-color: #007bff; /* Volvemos al Azul primario */
+    padding: 0.8rem 1.5rem; /* Ajuste de padding */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.navbar-user-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user-link {
+    color: white;
+    margin-right: 20px; /* Aumentamos un poco el margen */
+    text-decoration: none;
+    text-align: center; /* Centramos el texto horizontalmente */
+    font-weight: 500;
+    padding: 0.5rem 0.8rem; /* Añadimos padding horizontal para que parezcan más botones */
+    border-radius: 4px; /* Bordes redondeados para los enlaces */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.navbar-user-link:hover,
+.navbar-user-link.active { /* Podríamos añadir una clase 'active' con NavLink más adelante */
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo sutil al pasar el ratón o estar activo */
+    color: #fff; /* Aseguramos que el color del texto siga siendo blanco o claro */
+}
+
+.navbar-user-session {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user-greeting {
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.btn-navbar-logout { /* Estilo específico para el botón de logout en el navbar */
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 6px 12px; /* Ajustamos padding */
+}
+
+.btn-navbar-logout:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* Contenido principal del admin */
+.admin-main-content {
+  flex-grow: 1;
+  padding: 25px;
+  overflow-y: auto; /* Permite scroll vertical si el contenido es largo */
+}
+
+.admin-page-container {
+  /* El padding ya se aplica en el JSX (p-3), pero podemos asegurar valores base si es necesario */
+  /* padding: 20px; */
+}
+
+.admin-page-container h2 {
+  color: #2a7595; /* Azul oscuro de tu paleta */
+  margin-bottom: 25px; /* Más espacio debajo del título */
+  font-weight: 600;
+}
+
+/* Estilos generales para botones de acción en páginas de admin */
+.button-crear,
+.button-editar,
+.button-eliminar {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  text-decoration: none; /* Para los <Link> que se vean como botones */
+  display: inline-block; /* Para que los <Link> respeten padding y margin */
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-right: 8px; /* Espacio entre botones */
+  margin-bottom: 15px; /* Espacio debajo de los botones (ej. botón crear arriba de la tabla) */
+}
+
+.button-crear:hover,
+.button-editar:hover,
+.button-eliminar:hover {
+  opacity: 0.9;
+}
+
+.button-crear:active,
+.button-editar:active,
+.button-eliminar:active {
+  transform: translateY(1px);
+}
+
+.button-crear {
+  background-color: #368979; /* Verde de tu paleta */
+}
+
+.button-editar {
+  background-color: #ffc107; /* Amarillo */
+}
+
+.button-eliminar {
+  background-color: #e74c3c; /* Rojo (consistente con logout) */
+}
+
+/* Contenedor para tablas responsivas */
+.table-responsive-container {
+  overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+  background-color: #ffffff; /* Fondo blanco para la tabla y su contenedor */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 5px; /* Un pequeño padding alrededor de la tabla si es necesario */
+  margin-bottom: 20px;
+}
+
+/* Estilos para las tablas dentro de las páginas de admin */
+.admin-page-container table,
+.table-responsive-container table {
+  width: 100%;
+  border-collapse: collapse; /* Bordes más limpios */
+  margin-top: 10px; /* Espacio arriba de la tabla si el botón está justo encima */
+}
+
+.admin-page-container table thead,
+.table-responsive-container table thead {
+  background-color: #2a7595; /* Azul de tu paleta */
+  color: #e0e0e0; /* Texto claro para el encabezado */
+}
+
+.admin-page-container table th,
+.admin-page-container table td,
+.table-responsive-container table th,
+.table-responsive-container table td {
+  padding: 12px 15px; /* Buen padding para las celdas */
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0; /* Borde inferior sutil para las filas */
+  color: #0d3d47; /* Texto oscuro de tu paleta */
+  font-size: 0.95em;
+}
+
+.admin-page-container table th,
+.table-responsive-container table th {
+  font-weight: 600; /* Encabezados en negrita */
+}
+
+/* Estilo cebra para filas (opcional, pero mejora legibilidad) */
+.admin-page-container table tbody tr:nth-of-type(even),
+.table-responsive-container table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa; /* Un gris muy claro, casi blanco */
+}
+
+.admin-page-container table img { /* Para las imágenes en tablas, como en NoticiasPage */
+  max-width: 100px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* ========================================= */
+/* Estilos para Formularios del Admin        */
+/* ========================================= */
+
+.admin-form-container {
+  width: 90%;
+  max-width: 850px; /* Ajusta según necesidad */
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.admin-form-container h2 {
+  text-align: center;
+  color: #2a7595; /* Azul oscuro de tu paleta */
+  margin-bottom: 35px;
+  font-weight: 600;
+}
+
+.admin-form-container .form-group {
+  margin-bottom: 22px;
+}
+
+.admin-form-container .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #34495e; /* Gris azulado oscuro */
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.admin-form-container input[type="text"],
+.admin-form-container input[type="email"],
+.admin-form-container input[type="password"],
+.admin-form-container input[type="date"],
+.admin-form-container input[type="time"],
+.admin-form-container input[type="file"],
+.admin-form-container select,
+.admin-form-container textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.admin-form-container input[type="text"]:focus,
+.admin-form-container input[type="email"]:focus,
+.admin-form-container input[type="password"]:focus,
+.admin-form-container input[type="date"]:focus,
+.admin-form-container input[type="time"]:focus,
+.admin-form-container input[type="file"]:focus,
+.admin-form-container select:focus,
+.admin-form-container textarea:focus {
+  border-color: #368979; /* Verde de tu paleta */
+  box-shadow: 0 0 0 0.2rem rgba(54, 137, 121, 0.25); /* Sombra verde suave */
+  outline: 0;
+}
+
+/* Estilos para input[type="file"] para que se vea un poco mejor */
+.admin-form-container input[type="file"] {
+  padding: 8px 12px; /* Ajuste de padding para file input */
+}
+
+.admin-form-container input[type="file"]::file-selector-button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: 1px solid #368979;
+  border-radius: 4px;
+  background-color: #368979;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-form-container input[type="file"]::file-selector-button:hover {
+  background-color: #2a7595; /* Azul oscuro al hover */
+  border-color: #2a7595;
+}
+
+/* Contenedor para los botones del formulario, si queremos alinearlos */
+.form-buttons-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end; /* Alinea botones a la derecha */
+  gap: 10px; /* Espacio entre botones */
+}
+
+/* Reutilizamos y especificamos los botones de formulario */
+.admin-form-container .form-button,
+.admin-form-container .form-button-cancel {
+  /* Heredan de .button-crear, .button-editar, etc. si tienen esas clases */
+  /* Aquí podemos añadir o sobreescribir estilos específicos para botones de formulario */
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-bottom: 0; /* Quitamos el margen inferior si están en .form-buttons-container */
+}
+
+.admin-form-container .form-button { /* Botón principal de guardar */
+  background-color: #368979; /* Verde */
+}
+
+.admin-form-container .form-button-cancel { /* Botón de cancelar */
+  background-color: #6c757d; /* Gris */
+}
+
+.admin-form-container .form-errors {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+
+.admin-form-container .form-errors p {
+  margin: 5px 0;
+}
+
+.admin-form-container .image-preview-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-form-container .image-preview {
+  max-width: 100%;
+  max-height: 250px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Para los radio buttons en ExcepcionFormPage */
+.admin-form-container .form-check-label {
+  margin-right: 15px; /* Espacio entre opciones de radio */
+  font-weight: normal;
+  color: #495057;
+}
+.admin-form-container .form-check-input {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+/* --- ESTADO DEL SIDEBAR ABIERTO/CERRADO (para Desktop y Tablet en modo no colapsado) --- */
+/* Por defecto, el sidebar está visible en pantallas grandes */
+
+.navbar-user {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky; /* Para que se quede fija arriba */
+  top: 0;
+  z-index: 1020; /* Por encima de otros contenidos */
+}
+
+.navbar-user-brand-link {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #2a7595; /* Azul oscuro de la paleta admin, para un toque de consistencia */
+  text-decoration: none;
+}
+
+.navbar-user-toggle {
+  display: none; /* Oculto en desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.navbar-user-toggle-icon {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: #343a40; /* Color oscuro para las barras */
+  border-radius: 1px;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animación para el botón hamburguesa (opcional) */
+.navbar-user-toggle.open .navbar-user-toggle-icon:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-user-toggle.open .navbar-user-toggle-icon:nth-child(2) {
+  opacity: 0;
+}
+.navbar-user-toggle.open .navbar-user-toggle-icon:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.navbar-user-collapse {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-user-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.navbar-user-link {
+  color: #495057; /* Gris oscuro para los enlaces */
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+}
+
+.navbar-user-link:hover,
+.navbar-user-link:focus,
+.navbar-user-link.active { /* Necesitarás NavLink de react-router-dom para la clase 'active' automática */
+  background-color: #e9ecef; /* Un gris muy claro para hover/active */
+  color: #007bff; /* Azul para el texto activo/hover */
+}
+
+.navbar-user-session {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.navbar-user-greeting {
+  color: #6c757d; /* Gris para el saludo */
+  margin-right: 1rem;
+  font-size: 0.9em;
+}
+
+.btn-navbar-logout {
+  background-color: #dc3545; /* Rojo para logout */
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-navbar-logout:hover {
+  background-color: #c82333; /* Rojo más oscuro */
+}
+
+/* Estilos para Mobile (hasta 768px) */
+@media (max-width: 768px) {
+  .navbar-user-toggle {
+    display: block; /* Mostrar el botón hamburguesa */
+  }
+  .navbar-user-collapse {
+    display: none; /* Ocultar el menú por defecto */
+    position: absolute;
+    top: 100%; /* Justo debajo del navbar */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-direction: column;
+    align-items: stretch; /* Que los items ocupen todo el ancho */
+    padding: 1rem 0; /* Padding vertical para el menú desplegado */
+  }
+  .navbar-user-collapse.open {
+    display: flex; /* Mostrar el menú cuando está abierto */
+  }
+  .navbar-user-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-user-link {
+    padding: 0.8rem 1.5rem; /* Más padding vertical en móvil */
+    margin-left: 0;
+    border-bottom: 1px solid #e9ecef; /* Separador entre enlaces */
+    text-align: center;
+  }
+  .navbar-user-link:last-child {
+    border-bottom: none;
+  }
+  .navbar-user-session {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .navbar-user-greeting {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* ========================================= */
+/* Estilos para HacerReservaPage             */
+/* ========================================= */
+
+.hacer-reserva-page {
+  padding: 20px 15px; /* Más padding horizontal en móvil */
+  max-width: 600px;   /* Para que no se vea demasiado ancho en desktop */
+  margin: 30px auto;  /* Centrado y con margen superior/inferior */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.hacer-reserva-page h2 {
+  text-align: center;
+  color: #2a7595; /* Azul de la paleta admin, o un color de usuario */
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.hacer-reserva-page .form-group-reserva {
+  margin-bottom: 25px;
+}
+
+.hacer-reserva-page .form-group-reserva label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #34495e; /* Un gris oscuro */
+  font-size: 1em;
+}
+
+.hacer-reserva-page .form-group-reserva select,
+.hacer-reserva-page .form-group-reserva input[type="date"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da; /* Borde gris claro */
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f8f9fa; /* Fondo ligeramente gris para los inputs */
+  color: #495057;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hacer-reserva-page .form-group-reserva select:focus,
+.hacer-reserva-page .form-group-reserva input[type="date"]:focus {
+  border-color: #368979; /* Verde de la paleta al enfocar */
+  box-shadow: 0 0 0 0.2rem rgba(54, 137, 121, 0.25); /* Sombra verde suave */
+  outline: none;
+}
+
+.hacer-reserva-page .form-group-reserva h3 {
+  font-size: 1.2em;
+  color: #34495e;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.hacer-reserva-page .available-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* Ajusta minmax para el tamaño deseado */
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.hacer-reserva-page .slot-button {
+  padding: 12px 10px;
+  border: 1px solid #368979; /* Borde verde */
+  background-color: #ffffff;
+  color: #368979; /* Texto verde */
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.hacer-reserva-page .slot-button:hover {
+  background-color: #f0f9f8; /* Un verde muy pálido al pasar el mouse */
+}
+
+.hacer-reserva-page .slot-button.selected {
+  background-color: #368979; /* Fondo verde cuando está seleccionado */
+  color: #ffffff; /* Texto blanco cuando está seleccionado */
+  font-weight: bold;
+  transform: scale(1.03); /* Ligero zoom al seleccionar */
+}
+
+.hacer-reserva-page .confirm-reserva-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.15rem;
+  background-color: #28a745; /* Verde brillante para confirmar */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 35px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.hacer-reserva-page .confirm-reserva-button:hover {
+  background-color: #218838; /* Verde más oscuro al pasar el mouse */
+}
+
+.hacer-reserva-page .loading-message,
+.hacer-reserva-page .no-slots-message {
+  margin-top: 25px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.hacer-reserva-page .loading-message {
+  color: #545b62;
+}
+
+.hacer-reserva-page .no-slots-message {
+  color: #c82333; /* Un rojo para destacar que no hay horarios */
+  background-color: #fdf3f3;
+  border: 1px solid #f5c6cb;
+}
+
+/* ========================================= */
+/* Estilos para el Sitio Público             */
+/* ========================================= */
+
+.public-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif; /* Mantenemos Poppins por ahora */
+}
+
+.public-main-content {
+  flex-grow: 1;
+  /* background-color: #f7f9fa;  Un fondo muy claro si es necesario */
+}
+
+/* --- PublicNavbar --- */
+.public-navbar {
+  background-color: #ffffff; /* Navbar blanco */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* Encima de otros elementos */
+}
+
+.public-navbar-container {
+  max-width: 1200px; /* Ancho máximo para el contenido del navbar */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.public-navbar-brand {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #2ECC71; /* Verde Esmeralda para la marca */
+  text-decoration: none;
+}
+
+.public-navbar-toggle {
+  display: none; /* Oculto por defecto, se mostrará en móviles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1032; /* Por encima del logo y los links desplegables */
+}
+
+.public-navbar-toggle-icon {
+  display: block;
+  width: 25px; /* Un poco más grande para mejor visibilidad */
+  height: 3px;
+  background-color: #34495e; /* Color de las barras del icono (gris oscuro) */
+  border-radius: 1px;
+  margin: 5px 0; /* Espacio entre las barras */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animación del icono hamburguesa a "X" cuando está abierto */
+.public-navbar-toggle.open .public-navbar-toggle-icon:nth-child(1) {
+  transform: translateY(8px) rotate(45deg); /* Ajuste de translación por el margen */
+}
+.public-navbar-toggle.open .public-navbar-toggle-icon:nth-child(2) {
+  opacity: 0;
+}
+.public-navbar-toggle.open .public-navbar-toggle-icon:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg); /* Ajuste de translación */
+}
+
+.public-navbar-links .public-nav-link {
+  color: #34495e; /* Texto gris oscuro */
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.public-navbar-links .public-nav-link:hover {
+  color: #2ECC71; /* Verde al pasar el mouse */
+}
+
+.public-navbar-links .public-nav-link.active { /* Estilo para el enlace activo */
+  color: #2ECC71; /* Verde Esmeralda */
+  font-weight: 600; /* Un poco más de énfasis */
+  /* Podrías añadir un borde inferior o algo más si quieres */
+}
+
+.public-navbar-links .btn-login {
+  background-color: #3498DB; /* Azul para el botón de login */
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.public-navbar-links .btn-login:hover {
+  background-color: #2980b9; /* Azul más oscuro */
+  color: white;
+}
+
+/* --- PublicFooter --- */
+.public-footer {
+  background-color: #2c3e50; /* Footer oscuro */
+  color: #bdc3c7; /* Texto claro */
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9em;
+}
+
+/* --- HomePage Hero Section --- */
+.hero-section {
+   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); /* Nueva imagen de placeholder (campo de fútbol) */
+   background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 100px 20px; /* Ajusta el padding según necesites */
+  text-align: center;
+  min-height: 70vh; /* Altura mínima para que sea impactante */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem; /* Tamaño grande para el título */
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: white; /* Aseguramos color blanco para el H1 del hero */
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.btn-hero-cta {
+  background-color: #2ECC71; /* Verde Esmeralda */
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px; /* Botón más redondeado/píldora */
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-hero-cta:hover {
+  background-color: #27ae60; /* Verde más oscuro */
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+.canchas-page-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.canchas-page-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.canchas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.cancha-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    background-color: #fff;
+    float: left;
+}
+
+.cancha-card:hover {
+    transform: translateY(-5px);
+}
+
+.cancha-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Para que la imagen cubra el espacio sin deformarse */
+}
+
+.cancha-card-content {
+    padding: 15px;
+}
+
+.cancha-card-content h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #007bff; /* Un color para el título */
+}
+
+.cancha-card-descripcion {
+    font-size: 0.9em;
+    color: #555;
+    min-height: 60px; /* Para que las tarjetas tengan una altura similar si las descripciones varían */
+}
+
+.canchas-page-loading,
+.canchas-page-error,
+.canchas-page-empty {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 40px;
+}
+.img_front_cancha{
+  width: 90%;
+  height: auto;
+  border-radius: 8px; 
+  margin: 0 auto;
+  display: block; /* Para centrar la imagen */
+}
+.tit_card_front{
+  margin: 0 auto;
+  color: #28a745;
+  text-align: center;
+}
+/* Responsive para el Navbar público */
+@media (max-width: 768px) {
+  /* .public-navbar-container mantiene su display: flex; justify-content: space-between; align-items: center; */
+  /* para que el logo y el botón hamburguesa estén en la misma línea. */
+
+  .public-navbar-toggle {
+    display: block; /* Mostrar el botón hamburguesa en móviles */
+  }
+
+  .public-navbar-links {
+    display: none; /* Ocultar los enlaces por defecto en móviles */
+    position: absolute;
+    top: 100%; /* Justo debajo del .public-navbar */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-direction: column;
+    align-items: stretch; /* Que los items ocupen todo el ancho */
+    padding: 0.5rem 0; /* Padding vertical para el menú desplegado */
+    margin-top: 0; /* Reseteamos el margen que tenía antes */
+    width: 100%;
+    z-index: 1031; /* Debajo del toggle pero encima del contenido de la página */
+  }
+
+  .public-navbar-links.open {
+    display: flex; /* Mostrar los enlaces cuando el menú está abierto */
+  }
+
+  .public-navbar-links .public-nav-link {
+    margin-left: 0;
+    padding: 0.8rem 1.5rem; /* Más padding vertical en móvil */
+    border-bottom: 1px solid #e9ecef; /* Separador entre enlaces */
+    width: 100%; /* Asegurar que ocupen todo el ancho */
+    box-sizing: border-box; /* Para que el padding no aumente el ancho */
+    text-align: left; /* O center, según preferencia */
+    font-weight: 500;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .public-navbar-links .public-nav-link:last-child {
+    border-bottom: none;
+  }
+  .public-navbar-links .btn-login {
+    /* width: auto; /* Para que no ocupe todo el ancho si no queremos */
+    margin: 0.8rem 1.5rem; /* Margen para el botón de login si es el último */
+    text-align: center;
+  }
+}
+
+/* Cuando el sidebar está cerrado (controlado por la clase 'sidebar-open' en admin-layout) */
+/* En este caso, no vamos a ocultar el sidebar en desktop, sino que el botón podría cambiar de función */
+/* o simplemente no tener un estado 'cerrado' visualmente en desktop a menos que lo queramos colapsar. */
+/* La lógica actual de 'isSidebarOpen' es más para el toggle en mobile. */
+
+
+/* --- RESPONSIVIDAD --- */
+
+/* Para pantallas más pequeñas (tablets y móviles) */
+@media (max-width: 992px) { /* Un punto de quiebre común para tablets */
+  .admin-sidebar {
+    position: fixed; /* Lo sacamos del flujo normal para que se superponga */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%); /* Oculto por defecto fuera de la pantalla */
+    /* width: 260px; ya definido */
+    /* z-index: 1000; ya definido */
+  }
+
+  .admin-layout.sidebar-open .admin-sidebar {
+    transform: translateX(0); /* Se muestra cuando 'sidebar-open' está activo */
+  }
+
+  /* El botón de toggle es más importante en mobile */
+  .sidebar-toggle {
+    display: inline-block; /* Aseguramos que sea visible */
+  }
+
+  /* Opcional: Podríamos añadir un overlay oscuro sobre el contenido cuando el sidebar está abierto en mobile */
+  .admin-layout.sidebar-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 998; /* Detrás del sidebar pero encima del main-container */
+  }
+}
+
+@media (min-width: 993px) {
+  /* En pantallas grandes, el botón de toggle podría no ser necesario si el sidebar siempre está visible */
+  /* O podría usarse para colapsar el sidebar a un ancho menor (requeriría más CSS y JS) */
+  /* Por ahora, lo dejamos como está, y el toggle funciona igual */
+
+  /* Si el sidebar está "cerrado" en desktop, empujamos el contenido */
+  .admin-layout:not(.sidebar-open) .admin-sidebar {
+     /* Si quisiéramos que se oculte también en desktop al hacer toggle */
+     /* transform: translateX(-100%); */
+     /* O que se colapse a un ancho menor: */
+     /* width: 80px; */
+     /* Y luego ajustar el contenido de los items del sidebar */
+  }
+
+  .admin-layout:not(.sidebar-open) .admin-main-container {
+    /* Si el sidebar se oculta o colapsa, el main container podría ocupar más espacio */
+    /* margin-left: 0; o margin-left: 80px; */
+  }
+
+  /* Por defecto, con el sidebar abierto en desktop, el main container se ajusta */
+   .admin-layout.sidebar-open .admin-main-container {
+    /* margin-left: 260px;  Esto no es necesario con flexbox si el sidebar está en el flujo */
+  }
+}
+
+/* Ajuste para el h2 del sidebar con la clase display_sm */
+/* Por ejemplo, si quisiéramos ocultarlo cuando el sidebar se colapsa (no implementado aún) */
+/* .admin-sidebar.collapsed .display_sm {
+  display: none;
+} */
+/* O si solo queremos que sea más pequeño en mobile */
+@media (max-width: 767px) {
+  .admin-sidebar h2.display_sm { /* La clase ya está en el h2 */
+    font-size: 1.5em; /* Un poco más pequeño en móviles */
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Más estilos para otros tipos de botones (secondary, success, etc.) pueden ir aquí */
+
+/* Media query para pantallas pequeñas (opcional, pero buena práctica) */
+@media (max-width: 480px) {
+  .login-form-wrapper {
+    padding: 25px 20px;
+    margin: 15px; /* Añade un poco de margen en pantallas muy pequeñas */
+  }
+
+  .login-header h2 {
+    font-size: 24px;
+  }
+
+  .login-header p {
+    font-size: 14px;
+  }
+}
+
+/* ========================================= */
+/* Estilos para Pagina de Contacto           */
+/* ========================================= */
+
+.contacto-page-container {
+  padding: 25px 15px; /* Padding general para la página de contacto */
+  max-width: 1100px; /* Un ancho máximo para que no se extienda demasiado en pantallas grandes */
+  margin: 0 auto; /* Centrar el contenedor de la página */
+}
+
+.contacto-page-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  /* Hereda color y fuente de los h1 globales */
+}
+
+.contacto-layout {
+  display: flex;
+  flex-direction: column; /* Por defecto para móvil: una columna */
+  gap: 25px; /* Espacio entre secciones en móvil */
+}
+
+/* Wrappers para controlar el orden en flex y las áreas en grid */
+.info-contacto-wrapper {
+  order: 1; /* Móvil: Info primero */
+}
+
+.formulario-wrapper {
+  order: 2; /* Móvil: Formulario segundo */
+}
+
+.mapa-wrapper {
+  order: 3; /* Móvil: Mapa tercero */
+}
+
+/* Estilo común para las secciones internas (info, mapa, formulario) */
+.info-contacto,
+.mapa-container,
+.formulario-inner-content {
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff; /* Fondo blanco para destacar las secciones */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.info-contacto h2,
+.mapa-container h2,
+.formulario-inner-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  /* Heredan estilos de h2 globales */
+}
+
+.info-contacto p {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.formulario-inner-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e; /* Similar a admin-form-container label */
+}
+
+.formulario-inner-content input[type="text"],
+.formulario-inner-content input[type="email"],
+.formulario-inner-content textarea {
+  width: 100%;
+  padding: 12px 15px; /* Similar a login/admin inputs */
+  margin-bottom: 15px;
+  border: 1px solid #ced4da; /* Similar a admin-form-container input */
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem; /* Similar a admin-form-container input */
+}
+
+.formulario-inner-content textarea {
+  min-height: 120px; /* Para que el textarea tenga un buen tamaño */
+}
+
+/* El botón de enviar usará las clases .btn y .btn-primary definidas globalmente */
+
+.mapa-container iframe {
+  width: 100%;
+  height: 350px; /* Altura del mapa, puedes ajustarla */
+  border: 0;
+  border-radius: 6px; /* Para que coincida con el redondeo del contenedor */
+}
+
+/* Estilos para pantallas grandes (desktop) usando Grid */
+@media (min-width: 769px) {
+  .contacto-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual tamaño */
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "info form"   /* Fila 1: Info a la izq, Form a la der */
+      "mapa form";  /* Fila 2: Mapa a la izq, Form sigue a la der */
+    gap: 30px; /* Espacio entre columnas y filas del grid */
+  }
+
+  .info-contacto-wrapper {
+    grid-area: info;
+    order: 0; /* Reseteamos order para grid */
+  }
+  .mapa-wrapper {
+    grid-area: mapa;
+    order: 0; /* Reseteamos order para grid */
+  }
+  .formulario-wrapper {
+    grid-area: form;
+    order: 0; /* Reseteamos order para grid */
+  }
+
+  .mapa-container iframe {
+    height: 100%; /* Para que el mapa ocupe la altura disponible en su celda del grid */
+    min-height: 300px; /* Una altura mínima por si acaso */
+  }
+}
+
+/* ========================================= */
+/* Estilos para Página Pública de Noticias   */
+/* ========================================= */
+
+.public-noticias-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+.public-noticias-page-container h1 {
+  /* Estilos ya definidos globalmente o puedes especificarlos */
+  /* text-3xl font-bold text-center my-8 (ejemplo de Tailwind) */
+  /* Para CSS normal: */
+  font-size: 2.25rem; /* Equivalente a text-3xl */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.noticias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.noticia-card-public {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.noticia-card-public:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.noticia-card-public-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.noticia-card-public-content {
+  padding: 20px;
+}
+
+.noticia-card-public-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #333; /* O tu color de título principal */
+  margin-bottom: 0.5rem;
+}
+
+.noticia-card-public-date {
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.noticia-card-public-description {
+  font-size: 0.95em;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ================================================ */
+/* Estilos para Página Detalle de Noticia Pública */
+/* ================================================ */
+
+.public-noticia-detalle-container {
+  max-width: 800px; /* Ancho más acotado para lectura */
+  margin: 30px auto;
+  padding: 20px 25px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.btn-volver-noticias {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #007bff; /* O tu color de enlace primario */
+  text-decoration: none;
+  font-weight: 500;
+}
+.btn-volver-noticias:hover {
+  text-decoration: underline;
+}
+
+.public-noticia-detalle-title {
+  font-size: 2.5rem; /* Más grande para el título principal */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.public-noticia-detalle-date {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.public-noticia-detalle-image {
+  width: 100%;
+  max-height: 450px; /* Limitar altura de la imagen */
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 25px;
+}
+
+.public-noticia-detalle-content {
+  font-size: 1.05em; /* Ligeramente más grande para facilitar lectura */
+  line-height: 1.8;
+  color: #3f3f3f;
+}
+
+.public-noticia-detalle-content p {
+  margin-bottom: 1.2em;
+}
+
+.public-noticia-detalle-content h2,
+.public-noticia-detalle-content h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+}

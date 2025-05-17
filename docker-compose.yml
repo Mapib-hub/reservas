@@ -1,0 +1,61 @@
+version: '3.8' # Especifica la versión de la sintaxis de Docker Compose
+
+services:
+  # Servicio del Frontend (Cliente React/Vite)
+  cliente:
+    build:
+      context: ./cliente # Ruta a la carpeta del frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8087:80" # Mapea el puerto 8087 del host al puerto 80 del contenedor (Nginx)
+    restart: unless-stopped
+    depends_on:
+      - servidor # El cliente depende del servidor para las llamadas API
+    networks:
+      - app-network
+
+  # Servicio del Backend (Servidor Node.js/Express)
+  servidor:
+    build:
+      context: ./servidor # Ruta a la carpeta del backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Mapea el puerto 3000 del host al puerto 3000 del contenedor (backend)
+                    # Si tu backend usa otro puerto, cámbialo aquí (ej. "5000:5000")
+    environment:
+      # Aquí van las variables de entorno que tu backend necesita.
+      # Estas se pasarán al contenedor del backend.
+      # Es mejor usar un archivo .env para esto en producción, pero para empezar está bien aquí.
+      NODE_ENV: development
+      PORT: 3000 # Asegúrate que coincida con el EXPOSE del Dockerfile del backend y el puerto interno
+      MONGODB_URI: mongodb://mongo_db:27017/reservas_app_db # Nombre del servicio de DB y nombre de la DB
+      # FRONTEND_URL: http://localhost # O el que corresponda para CORS si es necesario
+      # JWT_SECRET: tu_secreto_jwt_aqui
+      # Otras variables...
+    volumes:
+      - ./servidor/uploads:/usr/src/app/uploads # Mapea la carpeta de uploads local a la del contenedor
+      # - ./servidor:/usr/src/app # Descomenta para desarrollo si quieres hot-reloading (puede requerir nodemon en el CMD del Dockerfile del backend)
+      # - /usr/src/app/node_modules # Evita que node_modules local sobreescriba el del contenedor
+    restart: unless-stopped
+    depends_on:
+      - mongo_db # El servidor depende de la base de datos
+    networks:
+      - app-network
+
+  # Servicio de la Base de Datos (MongoDB)
+  mongo_db:
+    image: mongo:latest # Usa la imagen oficial más reciente de MongoDB
+    ports:
+      - "27017:27017" # Mapea el puerto 27017 del host al del contenedor (puerto estándar de MongoDB)
+    volumes:
+      - mongo-data:/data/db # Persiste los datos de MongoDB en un volumen llamado 'mongo-data'
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge # Crea una red para que los contenedores se comuniquen
+
+volumes:
+  mongo-data: # Define el volumen para persistir los datos de MongoDB

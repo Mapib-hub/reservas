@@ -1,0 +1,29 @@
+# Node.js / General
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.*
+!/.env.example # Si tienes un archivo de ejemplo para variables de entorno, no lo ignores
+
+# Carpetas de build/dist (aunque el Dockerfile del cliente las maneja, es bueno ignorarlas en Git)
+cliente/dist/
+cliente/coverage/ # Si tienes reportes de coverage
+cliente/.env # Ignora el .env real del cliente
+!cliente/.env.example # PERMITE el .env.example del cliente
+
+servidor/dist/ # Si tu backend se compila a una carpeta dist
+servidor/coverage/
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Archivos de IDEs (ejemplos)
+.idea/
+.vscode/
