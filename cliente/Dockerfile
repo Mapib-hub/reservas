@@ -13,6 +13,7 @@ RUN npm install
 
 # Copiar todo el código fuente del proyecto al directorio de trabajo
 COPY . .
+RUN echo "--- Contenido de .env.production en Docker build ---" && cat .env.production || echo "--- .env.production NO ENCONTRADO en Docker build ---"
 
 # Construir la aplicación para producción (Vite usa 'build')
 RUN npm run build
