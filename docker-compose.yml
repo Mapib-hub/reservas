@@ -29,7 +29,7 @@ services:
       NODE_ENV: development
       PORT: 3000 # Asegúrate que coincida con el EXPOSE del Dockerfile del backend y el puerto interno
       MONGODB_URI: mongodb://mongo_db:27017/reservas_app_db # Nombre del servicio de DB y nombre de la DB
-      # FRONTEND_URL: http://localhost # O el que corresponda para CORS si es necesario
+      CORS_ALLOWED_ORIGINS: http://100.107.48.58:8087 #
       # JWT_SECRET: tu_secreto_jwt_aqui
       # Otras variables...
     volumes:

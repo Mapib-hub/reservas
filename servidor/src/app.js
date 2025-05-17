@@ -15,11 +15,17 @@ import noticiasRoutes from './routes/noticias.routes.js';
 
 const app = express();
 // En c:\Users\Acer\Desktop\proyectos\reservas\servidor\src\app.js
-// ...
+// ... (otros imports)
+
+// Lee los orígenes permitidos desde una variable de entorno.
+// Si no está definida, usa un valor por defecto para desarrollo.
+const rawAllowedOrigins = process.env.CORS_ALLOWED_ORIGINS || 'http://localhost:5173';
+const allowedOrigins = rawAllowedOrigins.split(',').map(origin => origin.trim());
+console.log("Orígenes CORS permitidos:", allowedOrigins); // Para depurar
+
 app.use(cors({
     origin: function (origin, callback) {
-        console.log("Solicitud CORS - Origen recibido por el servidor:", origin); // Para depurar
-        const allowedOrigins = ['http://localhost:5173', 'http://localhost:5173/']; // Lista de orígenes permitidos
+        // console.log("Solicitud CORS - Origen recibido por el servidor:", origin); // Puedes mantenerlo para depurar si quieres
         if (!origin || allowedOrigins.includes(origin)) {
             // Si el origen está en la lista (o no hay origen, como en Postman), permitir
             callback(null, true);
