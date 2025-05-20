@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useExcepciones } from '../../context/ExcepcionContext';
 import { useCanchas } from '../../context/CanchasContext';
+import Swal from 'sweetalert2'; // 1. Importar SweetAlert2
 
 // Opciones para el tipo de excepción, basadas en el enum del modelo
-const tiposExcepcion = ['FERIADO', 'MANTENIMIENTO', 'EVENTO_PRIVADO', 'REPARACION', 'BLOQUEO_ESPECIAL'];
+const tiposExcepcion = ['FERIADO', 'MANTENIMIENTO', 'EVENTO_PRIVADO', 'REPARACION', 'BLOQUEO_ESPECIAL', 'FERIADO_NACIONAL'];
 
 const ExcepcionFormPage = () => {
     const { id } = useParams(); // Para el modo edición
@@ -33,29 +34,62 @@ const ExcepcionFormPage = () => {
                 setIsLoading(true);
                 setErrors([]);
                 try {
+                    console.log(`[DEBUG] Cargando excepción con ID: ${id}`);
                     const excepcion = await getExcepcion(id);
-                    // Convertir fecha_inicio y fecha_fin a los campos del formulario
-                    const fechaInicioDate = new Date(excepcion.fecha_inicio);
-                    const fechaFinDate = new Date(excepcion.fecha_fin);
+                    console.log("[DEBUG] Excepción recibida del backend:", JSON.stringify(excepcion, null, 2));
 
-                    const formFecha = fechaInicioDate.toISOString().split('T')[0];
+                    // Las fechas del backend vienen como strings ISO (UTC)
+                    const backendFechaInicio = new Date(excepcion.fecha_inicio);
+                    const backendFechaFin = new Date(excepcion.fecha_fin);
+
+                    console.log("[DEBUG] backendFechaInicio (objeto Date):", backendFechaInicio.toISOString(), "| Local:", backendFechaInicio.toString());
+                    console.log("[DEBUG] backendFechaFin (objeto Date):", backendFechaFin.toISOString(), "| Local:", backendFechaFin.toString());
+
+                    // La fecha para el input 'date' debe ser la fecha local del evento.
+                    const formFecha = `${backendFechaInicio.getFullYear()}-${String(backendFechaInicio.getMonth() + 1).padStart(2, '0')}-${String(backendFechaInicio.getDate()).padStart(2, '0')}`;
+                    console.log("[DEBUG] formFecha (para input date):", formFecha);
+                    
                     let formTipoHorario = 'DIA_COMPLETO';
                     let formHoraInicio = '';
                     let formHoraFin = '';
 
-                    // Verificar si es día completo (00:00 a 23:59:59.999)
-                    const esDiaCompleto =
-                        fechaInicioDate.getHours() === 0 && fechaInicioDate.getMinutes() === 0 &&
-                        fechaFinDate.getHours() === 23 && fechaFinDate.getMinutes() === 59;
+                    // Para determinar si es "DIA_COMPLETO", verificamos si las fechas representan
+                    // 00:00:00.000 y 23:59:59.999 del MISMO DÍA en la zona horaria LOCAL.
+                    const inicioEsMedianocheLocal =
+                        backendFechaInicio.getHours() === 0 &&
+                        backendFechaInicio.getMinutes() === 0 &&
+                        backendFechaInicio.getSeconds() === 0 &&
+                        backendFechaInicio.getMilliseconds() === 0;
 
-                    if (!esDiaCompleto) {
+                    const finEsFinDeDiaLocal =
+                        backendFechaFin.getHours() === 23 &&
+                        backendFechaFin.getMinutes() === 59 &&
+                        backendFechaFin.getSeconds() === 59 &&
+                        backendFechaFin.getMilliseconds() === 999;
+                    
+                    // Adicionalmente, verificamos que ambas fechas caigan en el mismo día calendario local.
+                    const mismoDiaLocal =
+                        backendFechaInicio.getFullYear() === backendFechaFin.getFullYear() &&
+                        backendFechaInicio.getMonth() === backendFechaFin.getMonth() &&
+                        backendFechaInicio.getDate() === backendFechaFin.getDate();
+
+                    console.log("[DEBUG] inicioEsMedianocheLocal:", inicioEsMedianocheLocal, "| Hora Local inicio:", backendFechaInicio.getHours());
+                    console.log("[DEBUG] finEsFinDeDiaLocal:", finEsFinDeDiaLocal, "| Hora Local fin:", backendFechaFin.getHours());
+                    console.log("[DEBUG] mismoDiaLocal:", mismoDiaLocal);
+
+                    if (mismoDiaLocal && inicioEsMedianocheLocal && finEsFinDeDiaLocal) {
+                        formTipoHorario = 'DIA_COMPLETO';
+                        console.log("[DEBUG] Determinando como DIA_COMPLETO");
+                    } else {
                         formTipoHorario = 'RANGO_HORAS';
-                        formHoraInicio = `${String(fechaInicioDate.getHours()).padStart(2, '0')}:${String(fechaInicioDate.getMinutes()).padStart(2, '0')}`;
-                        formHoraFin = `${String(fechaFinDate.getHours()).padStart(2, '0')}:${String(fechaFinDate.getMinutes()).padStart(2, '0')}`;
+                        // Para RANGO_HORAS, mostramos las horas convertidas a la zona horaria local del navegador.
+                        formHoraInicio = `${String(backendFechaInicio.getHours()).padStart(2, '0')}:${String(backendFechaInicio.getMinutes()).padStart(2, '0')}`;
+                        formHoraFin = `${String(backendFechaFin.getHours()).padStart(2, '0')}:${String(backendFechaFin.getMinutes()).padStart(2, '0')}`;
+                        console.log("[DEBUG] Determinando como RANGO_HORAS. Hora inicio local calculada:", formHoraInicio, "Hora fin local calculada:", formHoraFin);
                     }
 
-                    setForm({
-                        fecha: formFecha,
+                    const newFormState = {
+                        fecha: formFecha, // Esta es la fecha local del inicio del evento.
                         tipo_horario: formTipoHorario,
                         hora_inicio: formHoraInicio,
                         hora_fin: formHoraFin,
@@ -63,7 +97,10 @@ const ExcepcionFormPage = () => {
                         tipo: excepcion.tipo,
                         descripcion: excepcion.descripcion,
                         titulo_display: excepcion.titulo_display || '',
-                    });
+                    };
+                    console.log("[DEBUG] Estado del formulario a establecer (setForm):", JSON.stringify(newFormState, null, 2));
+                    setForm(newFormState);
+
                 } catch (error) {
                     console.error("Error al cargar la excepción para editar:", error);
                     setErrors([error.response?.data?.message || error.message || "No se pudo cargar la excepción."]);
@@ -101,13 +138,21 @@ const ExcepcionFormPage = () => {
         // Construir fecha_inicio y fecha_fin para el backend
         let fecha_inicio, fecha_fin;
         const [year, month, day] = form.fecha.split('-').map(Number);
-
+ 
         if (form.tipo_horario === 'DIA_COMPLETO') {
-            fecha_inicio = new Date(year, month - 1, day, 0, 0, 0, 0); // Mes es 0-indexado
-            fecha_fin = new Date(year, month - 1, day, 23, 59, 59, 999);
+            // Para "Todo el día", queremos 00:00 del día local hasta 23:59:59.999 del mismo día local.
+            // El objeto Date se creará en la zona horaria del navegador.
+            // Al enviarse al backend (JSON), se convertirá a UTC automáticamente.
+            fecha_inicio = new Date(year, month - 1, day, 0, 0, 0, 0); // 00:00:00.000 local
+            fecha_fin = new Date(year, month - 1, day, 23, 59, 59, 999); // 23:59:59.999 local
         } else { // RANGO_HORAS
             const [startHour, startMinute] = form.hora_inicio.split(':').map(Number);
             const [endHour, endMinute] = form.hora_fin.split(':').map(Number);
+            
+            // Construir las fechas usando los componentes de fecha y hora LOCALES.
+            // El objeto Date resultante estará en la zona horaria del navegador.
+            // Cuando se envíe al backend (ej. como JSON vía axios), se convertirá
+            // automáticamente a una cadena ISO 8601 en UTC.
             fecha_inicio = new Date(year, month - 1, day, startHour, startMinute, 0, 0);
             fecha_fin = new Date(year, month - 1, day, endHour, endMinute, 0, 0);
         }
@@ -119,18 +164,29 @@ const ExcepcionFormPage = () => {
             tipo: form.tipo,
             descripcion: form.descripcion,
             titulo_display: form.titulo_display || null, // Enviar null si está vacío
-            // bloque_horario_id se omite, el backend lo manejará como null por defecto
         };
 
         try {
             if (isEdit) {
                 await updateExcepcion(id, excepcionData);
-                alert('Excepción actualizada con éxito!');
+                Swal.fire({
+                    title: '¡Actualizado!',
+                    text: 'Excepción actualizada con éxito.',
+                    icon: 'success',
+                    timer: 2000, 
+                    showConfirmButton: false
+                });
             } else {
                 await createExcepcion(excepcionData);
-                alert('Excepción creada con éxito!');
+                Swal.fire({
+                    title: '¡Creado!',
+                    text: 'Excepción creada con éxito.',
+                    icon: 'success',
+                    timer: 2000, 
+                    showConfirmButton: false
+                });
             }
-            navigate('/admin/excepciones');
+            setTimeout(() => navigate('/admin/excepciones'), 2000); 
         } catch (error) {
             console.error("Error al guardar la excepción:", error);
             if (error.response && error.response.data) {
@@ -145,7 +201,7 @@ const ExcepcionFormPage = () => {
     if (isLoading && isEdit) return <p>Cargando datos de la excepción...</p>;
 
     return (
-        <div className="admin-form-container"> {/* 1. Añadimos un div contenedor con una clase */}
+        <div className="admin-form-container"> 
             <h2 className="text-center mb-4">{isEdit ? 'Editar Excepción' : 'Crear Nueva Excepción'}</h2>
             {errors.length > 0 && (
                 <div className="alert alert-danger">

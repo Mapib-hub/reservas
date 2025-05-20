@@ -22,7 +22,7 @@ const ExcepcionesPage = () => {
 
     if (loading) return <p>Cargando excepciones...</p>;
     if (error) return <p className="text-danger">Error al cargar excepciones: {error}</p>;
-
+ 
     return (
         <div className="admin-page-container p-3"> {/* Contenedor general para la página de admin */}
             <h2 className="text-center mb-4">Gestión de Excepciones de Horarios</h2>

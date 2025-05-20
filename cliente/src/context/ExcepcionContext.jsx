@@ -59,7 +59,7 @@ export const ExcepcionProvider = ({ children }) => {
     }
   
   }, [isAuthenticated, authLoading, user]);
-
+ 
     const createExcepcion = async (excepcionData) => {
         try {
             const res = await createExcepcionRequest(excepcionData);

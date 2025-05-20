@@ -15,16 +15,16 @@ export const formatDate = (dateString, includeTime = false) => {
         return 'Fecha inválida'; // O podrías devolver la cadena original o ''
     }
 
-    const year = date.getUTCFullYear();
-    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Los meses son 0-indexados
-    const day = String(date.getUTCDate()).padStart(2, '0');
+    const year = date.getFullYear(); // Usar año local
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Usar mes local
+    const day = String(date.getDate()).padStart(2, '0'); // Usar día local
 
     let formattedDate = `${day}/${month}/${year}`; // Formato DD/MM/YYYY
 
     if (includeTime) {
-        const hours = String(date.getUTCHours()).padStart(2, '0');
-        const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-        formattedDate += ` ${hours}:${minutes}`; // Añade HH:MM (en UTC)
+        const hours = String(date.getHours()).padStart(2, '0'); // Usar horas locales
+        const minutes = String(date.getMinutes()).padStart(2, '0'); // Usar minutos locales
+        formattedDate += ` ${hours}:${minutes}`; // Añade HH:MM (en hora local)
     }
     return formattedDate;
 };
