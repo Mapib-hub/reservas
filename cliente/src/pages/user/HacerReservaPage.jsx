@@ -41,6 +41,8 @@ function HacerReservaPage() {
     try {
       const formattedDate = selectedDate; // El input date ya da YYYY-MM-DD
       const res = await getDisponibilidadRequest(selectedCancha, formattedDate);
+      console.log(selectedCancha, formattedDate); // Para depurar
+      console
       setAvailableSlots(res.data);
     } catch (error) {
       console.error("Error fetching disponibilidad:", error);

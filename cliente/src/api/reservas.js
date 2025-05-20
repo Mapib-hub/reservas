@@ -9,4 +9,4 @@ export const createReservaRequest = (reservaData) => axios.post(API_URL, reserva
 export const updateReservaRequest = (id, reservaData) => axios.put(`${API_URL}/${id}`, reservaData);
 export const deleteReservaRequest = (id) => axios.delete(`${API_URL}/${id}`);
 export const getDisponibilidadRequest = (canchaId, fecha) => 
-    axios.get(`/api/disponibilidad?canchaId=${canchaId}&fecha=${fecha}`); // Corregido: cancha_id a canchaId
+    axios.get(`/disponibilidad?canchaId=${canchaId}&fecha=${fecha}`); // Corregido: cancha_id a canchaId
