@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useNoti } from '../../context/NoticiaContex.jsx';
+import Swal from 'sweetalert2'; // 1. Importar SweetAlert2
 
 const NoticiaFormPage = () => {
   const navigate = useNavigate();
@@ -49,11 +50,27 @@ const NoticiaFormPage = () => {
       if (params.id) {
         // Estamos editando
         await updateNoti(params.id, formData);
+        // 2. Añadir SweetAlert para actualización
+        Swal.fire({
+          title: '¡Actualizada!',
+          text: 'Noticia actualizada con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
       } else {
         // Estamos creando
         await createNoti(formData);
+        // 3. Añadir SweetAlert para creación
+        Swal.fire({
+          title: '¡Creada!',
+          text: 'Noticia creada con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
       }
-      navigate('/admin/noticias'); // Redirigir a la lista de noticias después de crear
+      setTimeout(() => navigate('/admin/noticias'), 2000); // 4. Navegar después de la alerta
     } catch (error) {
       console.error("Error al guardar noticia:", error);
       if (error.response && error.response.data) {
@@ -63,13 +80,16 @@ const NoticiaFormPage = () => {
         } else if (error.response.data.message) {
           // Si el backend envía un objeto con una propiedad 'message' (como en handleMulterError)
           setErrors([error.response.data.message]);
+          Swal.fire('Error', error.response.data.message, 'error'); // 5. Mostrar error con SweetAlert
         } else {
           // Si el backend envía algo inesperado
           setErrors(['Ocurrió un error desconocido al guardar la noticia.']);
+          Swal.fire('Error', 'Ocurrió un error desconocido al guardar la noticia.', 'error'); // 5. Mostrar error con SweetAlert
         }
       } else {
         // Si no hay respuesta del backend (ej. error de red)
         setErrors(['Ocurrió un error al conectar con el servidor.']);
+        Swal.fire('Error', 'Ocurrió un error al conectar con el servidor.', 'error'); // 5. Mostrar error con SweetAlert
       }
     }
   };

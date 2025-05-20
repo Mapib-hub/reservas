@@ -22,7 +22,7 @@ const TarifasPage = () => {
       <h1>Tarifas</h1>
        
       <div className="canchas-list">
-        {canchas.map((cancha) => (  
+        {Array.isArray(canchas) && canchas.length > 0 ? canchas.map((cancha) => (
         <div key={cancha._id} className="cancha-card">
             <h2 className='tit_card_front'>{cancha.nombre}</h2>
           <div className="cancha-card-content">
@@ -43,7 +43,9 @@ const TarifasPage = () => {
             de 09:00 a 22:00 hrs.</p>
           </div>
         </div>
-       ))}
+       )) : (
+        <p>No hay información de tarifas disponible en este momento.</p>
+       )}
        
       
       </div>

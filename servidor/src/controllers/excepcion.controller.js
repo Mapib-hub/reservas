@@ -1,17 +1,40 @@
 import Excepcion from "../models/excepcion.model.js";
 
+// Helper para procesar las fechas de entrada
+const procesarFechaExcepcion = (fechaStr, esFechaFinParaTodoElDia = false) => {
+    if (!fechaStr) return undefined; // Si no hay fecha, no procesar
+
+    // Si la fecha ya incluye 'T', asumimos que tiene hora y la usamos directamente.
+    // JavaScript la interpretará y Mongoose la guardará en UTC.
+    if (fechaStr.includes('T')) {
+        return new Date(fechaStr);
+    } else {
+        // Si solo es YYYY-MM-DD, la interpretamos como medianoche UTC.
+        let fechaProcesada = new Date(fechaStr + 'T00:00:00.000Z');
+        // Si es la fecha_fin de un evento "todo el día", la ajustamos al inicio del día siguiente.
+        if (esFechaFinParaTodoElDia) {
+            fechaProcesada.setUTCDate(fechaProcesada.getUTCDate() + 1);
+        }
+        return fechaProcesada;
+    }
+};
+
 // Crear una nueva excepción
 export const createExcepcion = async (req, res) => {
-    const { fecha_inicio, fecha_fin, bloque_horario_id, cancha_id, tipo, descripcion } = req.body;
-
     try {
+        let { fecha_inicio: fiStr, fecha_fin: ffStr, bloque_horario_id, cancha_id, tipo, descripcion, titulo_display } = req.body;
+
+        // Determinar si es "todo el día" basado en si las fechas originales contienen 'T'
+        const esTodoElDia = !(fiStr && fiStr.includes('T')) && !(ffStr && ffStr.includes('T'));
+
         const nuevaExcepcion = new Excepcion({
-            fecha_inicio,
-            fecha_fin,
+            fecha_inicio: procesarFechaExcepcion(fiStr),
+            fecha_fin: procesarFechaExcepcion(ffStr, esTodoElDia), // Solo ajustar si es "todo el día"
             bloque_horario_id: bloque_horario_id || null, // Asegura null si no viene
             cancha_id: cancha_id || null,             // Asegura null si no viene
             tipo,
             descripcion,
+            titulo_display: titulo_display || null,
         });
         const excepcionGuardada = await nuevaExcepcion.save();
         res.status(201).json(excepcionGuardada);
@@ -51,13 +74,24 @@ export const getExcepcion = async (req, res) => {
 export const updateExcepcion = async (req, res) => {
     try {
         const excepcionId = req.params.id;
-        const datosActualizar = req.body; // Los campos a actualizar vienen en el body
+        const { fecha_inicio: fiStr, fecha_fin: ffStr, ...otrosDatos } = req.body;
 
+        let datosParaActualizar = { ...otrosDatos };
+
+        // Solo procesar y añadir fechas si se proporcionan en el body
+        if (fiStr !== undefined) { // Si se envió fecha_inicio (incluso si es null o "")
+            datosParaActualizar.fecha_inicio = procesarFechaExcepcion(fiStr);
+        }
+        if (ffStr !== undefined) { // Si se envió fecha_fin
+            const esTodoElDiaUpdate = !(fiStr && fiStr.includes('T')) && !(ffStr && ffStr.includes('T'));
+            datosParaActualizar.fecha_fin = procesarFechaExcepcion(ffStr, esTodoElDiaUpdate);
+        }
+ 
         // Usamos findByIdAndUpdate para encontrar y actualizar.
         // { new: true } hace que devuelva el documento actualizado.
         const excepcionActualizada = await Excepcion.findByIdAndUpdate(
             excepcionId,
-            datosActualizar,
+            datosParaActualizar, // Corregido: usar datosParaActualizar
             { new: true, runValidators: true } // runValidators para que se apliquen las validaciones del modelo
         );
 

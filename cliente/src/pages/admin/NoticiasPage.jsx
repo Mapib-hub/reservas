@@ -25,6 +25,7 @@ const NoticiasPage = () => {
               <tr>
                 <th>Imagen</th>
                 <th>Título</th>
+                <th>Descripción</th>
                 <th>Fecha de Creación</th>
                 <th>Acciones</th>
               </tr>

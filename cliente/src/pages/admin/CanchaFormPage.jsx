@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCanchas } from '../../context/CanchasContext.jsx';
+import Swal from 'sweetalert2'; // Importar SweetAlert2
 
 const CanchaFormPage = () => {
   const navigate = useNavigate();
@@ -70,14 +71,30 @@ const CanchaFormPage = () => {
       if (params.id) {
         // updateCancha debe estar preparado para recibir FormData
         await updateCancha(params.id, formData);
+        Swal.fire({
+          title: '¡Actualizada!',
+          text: 'Cancha actualizada con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
       } else {
         // createCancha debe estar preparado para recibir FormData
         await createCancha(formData);
+        Swal.fire({
+          title: '¡Creada!',
+          text: 'Cancha creada con éxito.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
       }
-      navigate('/admin/canchas');
+      setTimeout(() => navigate('/admin/canchas'), 2000); // Navegar después de la alerta
     } catch (error) {
       console.error("Error al guardar cancha:", error);
-      setErrors(error.response?.data?.message ? [error.response.data.message] : ['Ocurrió un error al guardar la cancha.']);
+      const errorMessage = error.response?.data?.message || (Array.isArray(error.response?.data) ? error.response.data.join(', ') : 'Ocurrió un error al guardar la cancha.');
+      setErrors([errorMessage]);
+      Swal.fire('Error', errorMessage, 'error'); // Mostrar error con SweetAlert también
     }
   };
 
