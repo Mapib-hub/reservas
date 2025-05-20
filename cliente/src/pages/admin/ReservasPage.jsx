@@ -21,7 +21,7 @@ const ReservasPage = () => {
 
     if (loading) return <p>Cargando reservas...</p>;
     if (error) return <p className="text-danger">Error al cargar reservas: {error}</p>;
-console.log(reservas);
+//console.log(reservas);
     return (
         <div className="admin-page-container p-3">
             <h2 className="text-center mb-4">Gestión de Reservas</h2>
