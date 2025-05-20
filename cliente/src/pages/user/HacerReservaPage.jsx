@@ -40,13 +40,23 @@ function HacerReservaPage() {
     setSelectedSlot(null); // Limpiar slot seleccionado
     try {
       const formattedDate = selectedDate; // El input date ya da YYYY-MM-DD
-      const res = await getDisponibilidadRequest(selectedCancha, formattedDate);
-      console.log(selectedCancha, formattedDate); // Para depurar
-      console
+      // Loguear los parámetros que se envían
+      console.log('Solicitando disponibilidad con Cancha ID:', selectedCancha, 'y Fecha:', formattedDate);
+      const res = await getDisponibilidadRequest(selectedCancha, formattedDate);      
       setAvailableSlots(res.data);
     } catch (error) {
       console.error("Error fetching disponibilidad:", error);
-      Swal.fire('Error', error.response?.data?.message || 'No se pudo cargar la disponibilidad.', 'error');
+      let errorMessage = 'No se pudo cargar la disponibilidad.';
+      if (error.response) {
+        console.error("Respuesta del servidor (error):", error.response.data); // Loguea la respuesta completa del error del backend
+        // Intentar obtener un mensaje más específico del backend
+        if (typeof error.response.data === 'object' && error.response.data !== null && error.response.data.message) {
+          errorMessage = error.response.data.message;
+        } else if (typeof error.response.data === 'string' && error.response.data.length > 0) {
+          errorMessage = error.response.data; // Si el backend envía un string simple como error
+        }
+      }
+      Swal.fire('Error', errorMessage, 'error');
       setAvailableSlots([]);
     } finally {
       setLoadingSlots(false);
