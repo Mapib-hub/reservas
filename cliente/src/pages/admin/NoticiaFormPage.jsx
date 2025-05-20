@@ -35,7 +35,7 @@ const NoticiaFormPage = () => {
     e.preventDefault();
     // Aquí irá la lógica para enviar los datos del formulario
     // y llamar a createNoti o updateNoti
-    console.log("Formulario enviado");
+   // console.log("Formulario enviado");
     // navigate('/admin/noticias'); // Para redirigir después de crear/editar
     setErrors([]); // Limpiar errores previos
 

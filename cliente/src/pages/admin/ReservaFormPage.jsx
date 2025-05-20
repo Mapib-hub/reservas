@@ -5,6 +5,7 @@ import { useCanchas } from '../../context/CanchasContext';
 import { useBloqueHorarios } from '../../context/BloqueHorariosContext';
 import { useUsers } from '../../context/UsersContext';
 import { useExcepciones } from '../../context/ExcepcionContext'; // Para verificar excepciones
+import Swal from 'sweetalert2'; // 1. Importar SweetAlert2
 
 // Opciones para el estado de la reserva, basadas en el enum del modelo
 const estadosReserva = ['PENDIENTE', 'CONFIRMADA', 'CANCELADA_USUARIO', 'CANCELADA_ADMIN', 'COMPLETADA', 'NO_ASISTIO'];
@@ -142,17 +143,29 @@ const ReservaFormPage = () => {
             notas_adicionales: form.notas_adicionales,
         };
  
-        console.log("Datos a enviar para la reserva:", reservaData); // <-- Añadimos este log
+        //console.log("Datos a enviar para la reserva:", reservaData); // <-- Añadimos este log
 
         try {
             if (isEdit) {
                 await updateReserva(id, reservaData);
-                alert('Reserva actualizada con éxito!');
+                Swal.fire({
+                    title: '¡Actualizado!',
+                    text: 'Reserva actualizada con éxito.',
+                    icon: 'success',
+                    timer: 2000, // Cierra automáticamente después de 2 segundos
+                    showConfirmButton: false
+                });
             } else {
                 await createReserva(reservaData);
-                alert('Reserva creada con éxito!');
+                Swal.fire({
+                    title: '¡Creado!',
+                    text: 'Reserva creada con éxito.',
+                    icon: 'success',
+                    timer: 2000, // Cierra automáticamente después de 2 segundos
+                    showConfirmButton: false
+                });
             }
-            navigate('/admin/reservas');
+            setTimeout(() => navigate('/admin/reservas'), 2000); // Navegar después de que se muestre el SweetAlert
         } catch (error) {
             console.error("Error al guardar la reserva:", error);
             if (error.response && error.response.data) {
