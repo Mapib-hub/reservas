@@ -4,7 +4,8 @@ export const consultarDisponibilidad = async (req, res) => {
     // Extraemos los parámetros de la query string de la URL
     // Ejemplo: /api/disponibilidad?canchaId=60f...&fecha=2024-07-28
     const { canchaId, fecha } = req.query;
-    console.log(canchaId, fecha);
+   console.log("Query recibida:", req.query);
+    console.log("canchaId:", canchaId, "fecha:", fecha);
     // Validación básica de parámetros
     if (!canchaId || !fecha) {
         return res.status(400).json({ message: 'Faltan parámetros requeridos: canchaId y fecha.' });
