@@ -22,7 +22,7 @@ const reservaSchema = new mongoose.Schema({
     },
     estado: { // Estado de la reserva (ej: 'Confirmada', 'Pendiente', 'Cancelada')
         type: String,
-        default: 'CONFIRMADA', // Por defecto, una reserva está confirmada
+        default: 'PENDIENTE', // Por defecto, una reserva está confirmada
         enum: [
             'PENDIENTE',      // Reserva hecha, esperando confirmación o pago (si aplica)
             'CONFIRMADA',     // Reserva activa y lista

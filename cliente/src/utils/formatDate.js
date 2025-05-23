@@ -4,27 +4,35 @@
  * @param {boolean} includeTime - Si es true, incluye la hora en el formato.
  * @returns {string} La fecha formateada, o una cadena vacía si la entrada no es válida.
  */
-export const formatDate = (dateString, includeTime = false) => {
-    if (!dateString) return '';
+export const formatDate = (fechaString) => {
+  if (!fechaString) return '';
 
-    const date = new Date(dateString);
+    // Esperamos una cadena en formato "YYYY-MM-DD".
+  // Dividimos la cadena para obtener año, mes y día.
+  const parts = fechaString.split('-');
 
-    // Verificar si la fecha es válida después de la conversión
-    if (isNaN(date.getTime())) {
-        console.warn(`Fecha inválida proporcionada a formatDate: ${dateString}`);
-        return 'Fecha inválida'; // O podrías devolver la cadena original o ''
-    }
+  // Verificamos que tengamos las tres partes esperadas.
+  if (parts.length === 3) {
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Meses en el objeto Date de JavaScript son 0-indexados (0=Enero, 11=Diciembre)
+    const day = parseInt(parts[2], 10);
 
-    const year = date.getFullYear(); // Usar año local
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Usar mes local
-    const day = String(date.getDate()).padStart(2, '0'); // Usar día local
+    // Creamos un objeto Date utilizando los componentes de fecha como si fueran UTC.
+    // Date.UTC() devuelve el número de milisegundos desde la época Unix para una fecha UTC.
+    // Luego, new Date() con este valor crea un objeto Date que representa ese momento exacto en UTC.
+    const date = new Date(Date.UTC(year, month, day));
 
-    let formattedDate = `${day}/${month}/${year}`; // Formato DD/MM/YYYY
+    // Usamos getUTCDate(), getUTCMonth(), y getUTCFullYear() para extraer los componentes
+    // de la fecha directamente de sus valores UTC, evitando cualquier conversión a la zona horaria local.
+    const utcDay = String(date.getUTCDate()).padStart(2, '0');
+    const utcMonth = String(date.getUTCMonth() + 1).padStart(2, '0'); // Sumamos 1 porque getUTCMonth() también es 0-indexado.
+    const utcYear = date.getUTCFullYear();
 
-    if (includeTime) {
-        const hours = String(date.getHours()).padStart(2, '0'); // Usar horas locales
-        const minutes = String(date.getMinutes()).padStart(2, '0'); // Usar minutos locales
-        formattedDate += ` ${hours}:${minutes}`; // Añade HH:MM (en hora local)
-    }
-    return formattedDate;
+    return `${utcDay}/${utcMonth}/${utcYear}`;
+  }
+
+  // Si la cadena de fecha no está en el formato esperado "YYYY-MM-DD",
+  // la devolvemos tal cual o podrías manejar el error de otra forma.
+  console.warn(`formatDate recibió un formato de fecha inesperado: ${fechaString}`);
+  return fechaString;
 };
