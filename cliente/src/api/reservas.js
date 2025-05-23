@@ -10,13 +10,16 @@ export const updateReservaRequest = (id, reservaData) => axios.put(`${API_URL}/$
 export const deleteReservaRequest = (id) => axios.delete(`${API_URL}/${id}`);
 // ... (código anterior en tu componente o donde llames a getDisponibilidadRequest)
 export const getDisponibilidadRequest = (canchaId, fecha) => {
-  console.log('Llamando a getDisponibilidadRequest con:', { canchaId, fecha }); // <-- Añade esto
-  return axios.get('/api/disponibilidad', {
+  console.log('Llamando a getDisponibilidadRequest con:', { canchaId, fecha });
+  // WORKAROUND: Usar URL absoluta para evitar problemas con el proxy/backend y la pérdida de parámetros.
+  // Idealmente, esto se configuraría globalmente o vendría de una variable de entorno.
+  // Asegúrate de que esta IP y puerto sean los correctos para tu entorno de desarrollo/producción.
+  const backendUrl = 'http://100.107.48.58:8087'; // O process.env.VITE_API_BASE_URL si usas Vite
+
+  return axios.get(`${backendUrl}/api/disponibilidad`, { // URL absoluta
     params: {
       canchaId: canchaId,
       fecha: fecha
     }
   });
 };
-// ... (código posterior)
-
