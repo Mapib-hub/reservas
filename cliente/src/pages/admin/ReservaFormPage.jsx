@@ -165,7 +165,9 @@ const ReservaFormPage = () => {
                     showConfirmButton: false
                 });
             }
-            setTimeout(() => navigate('/admin/reservas'), 2000); // Navegar después de que se muestre el SweetAlert
+            setTimeout(() => {
+                window.location.href = '/admin/reservas';
+            }, 2000); // Navegar después de que se muestre el SweetAlert
         } catch (error) {
             console.error("Error al guardar la reserva:", error);
             if (error.response && error.response.data) {
