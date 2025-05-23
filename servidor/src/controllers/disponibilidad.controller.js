@@ -32,7 +32,7 @@ export const consultarDisponibilidad2 = async (req, res) => {
    //console.log("Query recibida:", req.query);
     console.log("canchaId:", canchaId, "fecha:", fecha);
     // Validación básica de parámetros
-   /* if (!canchaId || !fecha) {
+    if (!canchaId || !fecha) {
         return res.status(400).json({ message: 'Faltan parámetros requeridos: canchaId y fecha.' });
     }
 
@@ -48,5 +48,5 @@ export const consultarDisponibilidad2 = async (req, res) => {
     } catch (error) {
         console.error('Error al consultar disponibilidad:', error);
         res.status(500).json({ message: 'Error interno del servidor al consultar disponibilidad.' });
-    }*/
+    }
 };
