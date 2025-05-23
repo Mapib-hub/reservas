@@ -5,6 +5,6 @@ import { consultarDisponibilidad } from '../controllers/disponibilidad.controlle
 const router = Router();
 
 // Definimos la ruta GET raíz para este conjunto de rutas
-router.get('/', consultarDisponibilidad);
+router.get('/disponibilidad', consultarDisponibilidad);
 
 export default router; 

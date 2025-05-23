@@ -56,7 +56,7 @@ app.use('/api', excepcionRoutes);
 app.use('/api', canchaRoutes); // <-- Añade esta línea
 app.use('/api', bloqueHorarioRoutes); // <-- Añade esta línea
 app.use('/api', reservaRoutes);
-app.use('/api/disponibilidad', disponibilidadRoutes); // <-- Monta las rutas de disponibilidad
+app.use('/api', disponibilidadRoutes); // Montar disponibilidadRoutes bajo /api también
 app.use("/api", noticiasRoutes);
  
 app.use('/uploads', express.static(join(__dirname, '../uploads')));
