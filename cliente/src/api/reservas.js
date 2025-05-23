@@ -29,7 +29,7 @@ export const consultarDisponibilidadRequestPOST = (canchaId, fecha) => {
   console.log('Consultando disponibilidad (POST) con:', { canchaId, fecha });
   // Asegúrate de que esta IP y puerto sean los correctos para tu backend.
   // Esta URL apunta a /api/disponibilidad en tu servidor.
-  const targetUrl = 'http://100.107.48.58:8087/api/disponibilidad'; 
+  const targetUrl = 'http://100.107.48.58:8087/api/api/disponibilidad'; 
 
   return axios.post(targetUrl, { // axios.post para enviar datos en el cuerpo
     canchaId: canchaId, // Enviamos canchaId en el cuerpo
