@@ -42,7 +42,7 @@ function HacerReservaPage() {
       const formattedDate = selectedDate; // El input date ya da YYYY-MM-DD
       // Loguear los parámetros que se envían
       console.log('Solicitando disponibilidad con Cancha ID:', selectedCancha, 'y Fecha:', formattedDate);
-      const res = await getDisponibilidadRequest(selectedCancha, formattedDate);      
+      const res = await consultarDisponibilidadRequestPOST(selectedCancha, formattedDate);      
       setAvailableSlots(res.data);
     } catch (error) {
       console.error("Error fetching disponibilidad:", error);
