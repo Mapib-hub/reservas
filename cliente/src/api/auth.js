@@ -1,7 +1,7 @@
 import axiosInstance from "./axios"; // Importamos nuestra instancia configurada de Axios
 
 // Función para el login
-export const loginRequest = (user) => axiosInstance.post(`/login`, user);
+export const loginRequest = (user) => axiosInstance.post(`/api/login`, user);
 
 // Función para verificar el token/sesión (si el backend tiene este endpoint)
 export const verifyTokenRequest = () => axiosInstance.get(`/verify`);
