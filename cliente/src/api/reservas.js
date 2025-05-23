@@ -14,7 +14,7 @@ export const getDisponibilidadRequest = (canchaId, fecha) => {
   // WORKAROUND: Usar URL absoluta para evitar problemas con el proxy/backend y la pérdida de parámetros.
   // Idealmente, esto se configuraría globalmente o vendría de una variable de entorno.
   // Asegúrate de que esta IP y puerto sean los correctos para tu entorno de desarrollo/producción.
-  const backendUrl = 'http://100.107.48.58:8087'; // O process.env.VITE_API_BASE_URL si usas Vite
+  const backendUrl = 'http://100.107.48.58:8087/api'; // O process.env.VITE_API_BASE_URL si usas Vite
 
   return axios.get(`${backendUrl}/api/disponibilidad`, { // URL absoluta
     params: {
