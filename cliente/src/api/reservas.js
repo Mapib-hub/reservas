@@ -1,7 +1,7 @@
 import axios from './axios'; // Tu instancia de axios configurada
 
 // Las rutas base para las reservas en tu API
-const API_URL = 'reservas'; // Relativo al baseURL ('/api')
+const API_URL = '/api/reservas';
 
 export const getReservasRequest = () => axios.get(API_URL);
 export const getReservaRequest = (id) => axios.get(`${API_URL}/${id}`);
@@ -9,7 +9,7 @@ export const createReservaRequest = (reservaData) => axios.post(API_URL, reserva
 export const updateReservaRequest = (id, reservaData) => axios.put(`${API_URL}/${id}`, reservaData);
 export const deleteReservaRequest = (id) => axios.delete(`${API_URL}/${id}`);
 export const getDisponibilidadRequest = (canchaId, fecha) => {
-  return axios.get('disponibilidad/', { // Ruta relativa al baseURL ('/api')
+  return axios.get('/api/disponibilidad/', {
     params: { // Axios construirá la query string: ?canchaId=...&fecha=...
       canchaId: canchaId,
       fecha: fecha
