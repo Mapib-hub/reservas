@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCanchas } from '../../context/CanchasContext'; // Para obtener las canchas
-import { getDisponibilidadRequest } from '../../api/reservas'; // Para obtener disponibilidad
+import { getDisponibilidadRequest, consultarDisponibilidadRequestPOST } from '../../api/reservas'; // Para obtener disponibilidad
 import { useReservas } from '../../context/ReservaContext'; // Para crear la reserva
 import Swal from 'sweetalert2';
 
