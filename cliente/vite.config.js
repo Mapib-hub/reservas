@@ -11,7 +11,15 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000', // Asegúrate que esta sea la URL de tu backend Express
         changeOrigin: true, // Necesario para vhosts y para que el backend reciba el host correcto
-        // No necesitamos 'rewrite' aquí si tu backend espera las rutas con /api (ej. /api/disponibilidad)
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log(`[Vite Proxy Debug] Original URL: ${req.url}`);
+            console.log(`[Vite Proxy Debug] Path enviado al backend: ${proxyReq.path}`);
+          });
+          proxy.on('error', (err, req, res) => {
+            console.error('[Vite Proxy Debug] Error:', err);
+          });
+        }
       }
     }
   }
