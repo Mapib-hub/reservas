@@ -61,4 +61,4 @@ app.use("/api", noticiasRoutes);
  
 app.use('/uploads', express.static(join(__dirname, '../uploads')));
 
-export default app;
+export default app; 

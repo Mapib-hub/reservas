@@ -8,4 +8,4 @@ const router = Router();
 router.get('/disponibilidad', consultarDisponibilidad);
 router.post('/disponibilidad', consultarDisponibilidad2);
 
-export default router; 
+export default router;  

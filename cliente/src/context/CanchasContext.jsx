@@ -30,6 +30,7 @@ export const CanchasProvider = ({ children }) => {
       setLoading(true);
       setError(null);
       const res = await getCanchasRequest();
+      console.log("Canchas obtenidas:", res.data); // Para depurar
       setCanchas(res.data);
     } catch (err) {
       console.error("Error en getCanchas (context):", err);
